@@ -1,0 +1,22 @@
+# requesting travis sudo user permissions
+sudo: requires
+
+#tell travis we need a copy of docker running
+
+services:
+    -docker
+
+#build our image using Dockerfile.dev
+
+# series of steps need to occur before deploying or running our tests
+# we tag the image since we cant get image id
+before_install:
+    - docker build -t abhivashis/docker-react -f Dockerfile.dev .
+    
+#tell travis how to run our test suite
+script:
+    - docker run abhivashis/docker-react npm run test -- --coverage
+
+
+
+#tell travis how to deploy our code to AWS

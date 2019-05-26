@@ -1,5 +1,5 @@
 # requesting travis sudo user permissions
-sudo: requires
+sudo: required
 
 #tell travis we need a copy of docker running
 
